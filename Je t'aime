@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour Celena</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Poppins,sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 50% -10%,#ffb9dc 0%,transparent 35%),
+        radial-gradient(circle at 0% 100%,#700044 0%,transparent 30%),
+        linear-gradient(135deg,#10000d,#3d0029,#12000f);
+    overflow-x:hidden;
+    transition:.3s;
+}
+
+body.shake{
+    animation:shake .35s ease;
+}
+
+@keyframes shake{
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-8px)}
+    40%{transform:translateX(8px)}
+    60%{transform:translateX(-6px)}
+    80%{transform:translateX(6px)}
+}
+
+.hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    top:-50px;
+    color:#ff8fc7;
+    font-size:20px;
+    opacity:.8;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:0;
+    }
+    10%{opacity:.8}
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:92%;
+    max-width:520px;
+    margin:auto;
+    padding:30px 0 70px;
+}
+
+.card{
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(18px);
+    border-radius:30px;
+    padding:28px 20px;
+    text-align:center;
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+h1{
+    font-family:"Great Vibes",cursive;
+    font-size:76px;
+    font-weight:400;
+    margin:0;
+    color:#ff9dce;
+    text-shadow:0 0 25px rgba(255,120,190,.7);
+}
+
+.subtitle{
+    font-size:13px;
+    opacity:.6;
+}
+
+.love{
+    font-size:16px;
+    line-height:1.75;
+    margin:25px 0;
+}
+
+.highlight{
+    color:#ff91c8;
+    font-weight:700;
+}
+
+hr{
+    border:0;
+    border-top:1px solid rgba(255,255,255,.13);
+    margin:28px 0;
+}
+
+input{
+    width:100%;
+    padding:16px;
+    border:0;
+    border-radius:15px;
+    outline:none;
+    font-size:16px;
+    text-align:center;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:12px;
+    border:0;
+    border-radius:15px;
+    background:linear-gradient(135deg,#ff75b8,#ff429f);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow:0 8px 25px rgba(255,70,160,.2);
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+.secondary{
+    background:transparent;
+    box-shadow:none;
+    color:#ffb6d9;
+    text-decoration:underline;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.page{
+    animation:appear .6s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.game{
+    margin-top:25px;
+    padding:20px;
+    border-radius:22px;
+    background:rgba(0,0,0,.18);
+    border:1px solid rgba(255,255,255,.08);
+    animation:gameAppear .5s ease;
+}
+
+@keyframes gameAppear{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.game h2{
+    margin-top:0;
+}
+
+.small{
+    font-size:13px;
+    opacity:.6;
+}
+
+.result{
+    min-height:28px;
+    margin-top:15px;
+    font-weight:600;
+}
+
+.success{
+    animation:success .55s ease;
+}
+
+.fail{
+    animation:fail .5s ease;
+}
+
+@keyframes success{
+    0%{
+        transform:scale(.7);
+        opacity:0;
+    }
+    60%{
+        transform:scale(1.12);
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes fail{
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-10px)}
+    50%{transform:translateX(10px)}
+    75%{transform:translateX(-7px)}
+    100%{transform:translateX(0)}
+}
+
+.choice-row{
+    display:flex;
+    gap:10px;
+}
+
+.choice-row button{
+    flex:1;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:rgba(255,255,255,.12);
+    border-radius:20px;
+    overflow:hidden;
+    margin:18px 0;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ff5eaa,#ffb1d6);
+    border-radius:20px;
+    transition:.15s;
+}
+
+.love-buttons{
+    position:relative;
+    min-height:130px;
+}
+
+.love-buttons button{
+    width:48%;
+    position:absolute;
+    top:0;
+}
+
+#yesBtn{
+    left:0;
+}
+
+#noBtn{
+    right:0;
+}
+
+.swap{
+    animation:swap .4s ease;
+}
+
+@keyframes swap{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.15) rotate(4deg)}
+    100%{transform:scale(1)}
+}
+
+.reflex{
+    height:100px;
+    border-radius:20px;
+    background:#d51f3f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:18px;
+    user-select:none;
+    transition:background .03s;
+}
+
+.hold-area{
+    padding:15px;
+    border-radius:18px;
+    background:rgba(255,255,255,.06);
+}
+
+.hold-progress{
+    height:25px;
+    background:rgba(255,255,255,.12);
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:12px;
+}
+
+.hold-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ff4da8,#ffb3d8);
+    transition:width .05s linear;
+}
+
+#holdBtn{
+    user-select:none;
+    touch-action:none;
+}
+
+.girl-choice{
+    border:2px solid transparent;
+}
+
+.secret-heart-area{
+    position:relative;
+    height:170px;
+    margin-top:10px;
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.tiny-heart{
+    position:absolute;
+    font-size:9px;
+    color:#ff83c2;
+    cursor:pointer;
+    opacity:.85;
+}
+
+.color-btn{
+    min-height:55px;
+}
+
+.color-pink{
+    background:#ff4fa8;
+}
+
+.color-red{
+    background:#e51c46;
+}
+
+.color-green{
+    background:#20ad67;
+}
+
+.color-blue{
+    background:#3289e8;
+}
+
+.final-message{
+    padding:28px 20px;
+    border-radius:25px;
+    background:rgba(255,255,255,.08);
+    line-height:1.8;
+}
+
+.final-love{
+    font-family:"Great Vibes",cursive;
+    font-size:48px;
+    color:#ff91c8;
+    text-shadow:0 0 20px rgba(255,120,190,.6);
+}
+
+.ronaldo-page{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:#050505;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.ronaldo-box{
+    width:90%;
+    max-width:450px;
+}
+
+.ronaldo-face{
+    width:210px;
+    height:210px;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+    background:
+        radial-gradient(circle at 35% 38%,#111 0 7%,transparent 8%),
+        radial-gradient(circle at 65% 38%,#111 0 7%,transparent 8%),
+        #b97a55;
+    border:8px solid #111;
+}
+
+.tear{
+    position:absolute;
+    width:9px;
+    height:58px;
+    background:#55cfff;
+    border-radius:50%;
+    top:70px;
+}
+
+.tear.left{left:53px}
+.tear.right{right:53px}
+
+.ronaldo-mouth{
+    position:absolute;
+    width:70px;
+    height:25px;
+    border-bottom:6px solid #111;
+    border-radius:50%;
+    bottom:45px;
+    left:65px;
+}
+
+.ronaldo-title{
+    font-size:30px;
+    font-weight:800;
+    margin-top:25px;
+}
+
+.locked{
+    color:#aaa;
+    line-height:1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+
+<span class="heart" style="left:3%;animation-duration:7s">♥</span>
+<span class="heart" style="left:11%;animation-duration:9s;animation-delay:2s">♡</span>
+<span class="heart" style="left:20%;animation-duration:6s;animation-delay:1s">♥</span>
+<span class="heart" style="left:30%;animation-duration:8s;animation-delay:3s">♡</span>
+<span class="heart" style="left:40%;animation-duration:10s">♥</span>
+<span class="heart" style="left:50%;animation-duration:7s;animation-delay:4s">♡</span>
+<span class="heart" style="left:60%;animation-duration:9s">♥</span>
+<span class="heart" style="left:70%;animation-duration:6s;animation-delay:2s">♡</span>
+<span class="heart" style="left:80%;animation-duration:8s">♥</span>
+<span class="heart" style="left:90%;animation-duration:10s;animation-delay:3s">♡</span>
+
+</div>
+
+
+<div class="container">
+
+<div class="card">
+
+<div id="intro">
+
+<div class="subtitle">
+ce site est probablement une mauvaise idée
+</div>
+
+<h1>Celena</h1>
+
+<div class="love">
+
+Si ta ouvert le liens c'est que t'es
+<span class="highlight">curieuse de fou</span>
+et ta confiance en moi déjà.
+
+<br><br>
+
+Et sans mentir j'ai fait tout ça juste pour toi
+<span class="highlight">(ma p'tite italienne)</span>
+
+<br><br>
+
+Je voulais faire un truc original de fou
+j'espère tu va kiffer.
+
+<br><br>
+
+J'ai pris en tout
+<span class="highlight">32h</span>
+à que ce sois pour le codage ou les idée.
+
+<br><br>
+
+Et excuse moi si c'est pas parfait
+j'ai essayé de faire biens.
+
+</div>
+
+<hr>
+
+<p>
+Bon maintenant faut passer le contrôle de sécurité.
+</p>
+
+<p class="subtitle">
+mot de passe requis pour continuer
+</p>
+
+<input
+    id="password"
+    type="password"
+    placeholder="écris le mot de passe"
+>
+
+<button type="button" onclick="checkPassword()">
+continuer
+</button>
+
+<button
+    type="button"
+    class="secondary"
+    onclick="showHint()"
+>
+donner un indice ?
+</button>
+
+<div id="message" class="result"></div>
+
+<div id="hintBox" class="game hidden">
+
+<p>
+T'es vraiment déterminée toi.
+</p>
+
+<button type="button" onclick="troll(1)">
+indice 1
+</button>
+
+<button type="button" onclick="troll(2)">
+indice 2
+</button>
+
+<button type="button" onclick="troll(3)">
+indice 3
+</button>
+
+<button type="button" onclick="troll(4)">
+indice 4
+</button>
+
+<div id="trollResult" class="result"></div>
+
+</div>
+
+</div>
+
+
+<div id="games" class="hidden page">
+
+<h1 style="font-size:55px">
+Les épreuves
+</h1>
+
+<p>
+Tu pensais vraiment que le mot de passe c'était la fin ?
+</p>
+
+<p class="small">
+malheureusement pour toi non
+</p>
+
+
+<!-- EPREUVE 1 -->
+
+<div class="game">
+
+<h2>Épreuve 1</h2>
+
+<p>
+Clique 10 fois sur
+<span class="highlight">je t'aime</span>
+</p>
+
+<div class="progress">
+<div id="loveProgress" class="progress-bar"></div>
+</div>
+
+<div class="love-buttons">
+
+<button
+    type="button"
+    id="yesBtn"
+    onclick="loveClick()"
+>
+je t'aime
+</button>
+
+<button
+    type="button"
+    id="noBtn"
+    onclick="loveNo()"
+>
+je t'aime pas
+</button>
+
+</div>
+
+<div id="loveResult" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 3 -->
+
+<div id="game3" class="game hidden">
+
+<h2>Épreuve 3</h2>
+
+<p>
+Tu préfère être avec...
+</p>
+
+<div class="choice-row">
+
+<button type="button" onclick="choice3('moi')">
+moi
+</button>
+
+<button type="button" onclick="choice3('yanis')">
+Yanis
+</button>
+
+</div>
+
+<div id="result3" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 4 -->
+
+<div id="game4" class="game hidden">
+
+<h2>Épreuve 4</h2>
+
+<p>
+Le rectangle reste rouge.
+</p>
+
+<p>
+D'un coup il devient vert.
+</p>
+
+<p class="small">
+Clique exactement quand il est vert.
+Il ne le restera que quelques instants.
+</p>
+
+<div
+    id="reflex"
+    class="reflex"
+    onclick="reflexClick()"
+>
+ROUGE
+</div>
+
+<div id="result4" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 5 -->
+
+<div id="game5" class="game hidden">
+
+<h2>Épreuve 5</h2>
+
+<p>
+Complète :
+</p>
+
+<p class="highlight">
+Celena est...
+</p>
+
+<div class="choice-row">
+
+<button type="button" onclick="sentence(true)">
+belle
+</button>
+
+<button type="button" onclick="sentence(false)">
+moche
+</button>
+
+</div>
+
+<div id="result5" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 6 -->
+
+<div id="game6" class="game hidden">
+
+<h2>Épreuve 6</h2>
+
+<p>
+Maintiens le bouton jusqu'à remplir entièrement la barre.
+</p>
+
+<div class="hold-area">
+
+<div class="hold-progress">
+
+<div
+    id="holdFill"
+    class="hold-fill"
+></div>
+
+</div>
+
+<button
+    type="button"
+    id="holdBtn"
+    onpointerdown="startHold()"
+    onpointerup="stopHold()"
+    onpointercancel="stopHold()"
+    onpointerleave="stopHold()"
+>
+maintenir
+</button>
+
+</div>
+
+<div id="result6" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 7 -->
+
+<div id="game7" class="game hidden">
+
+<h2>Épreuve 7</h2>
+
+<p>
+Qui choisis-tu ?
+</p>
+
+<div class="choice-row">
+
+<button
+    type="button"
+    class="girl-choice"
+    onclick="girlChoice('celena')"
+>
+<div style="font-size:38px">C</div>
+Celena
+</button>
+
+<button
+    type="button"
+    class="girl-choice"
+    onclick="girlChoice('favelas')"
+>
+<div style="font-size:38px">F</div>
+Les filles des favelas
+</button>
+
+</div>
+
+<div id="result7" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 8 -->
+
+<div id="game8" class="game hidden">
+
+<h2>Épreuve 8</h2>
+
+<p>
+Un petit cœur est caché quelque part.
+</p>
+
+<p class="small">
+Il est minuscule.
+Bonne chance.
+</p>
+
+<div class="secret-heart-area">
+
+<span
+    class="tiny-heart"
+    style="left:13%;top:27%"
+    onclick="foundSecretHeart()"
+>
+♥
+</span>
+
+</div>
+
+<div id="result8" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 9 -->
+
+<div id="game9" class="game hidden">
+
+<h2>Épreuve 9</h2>
+
+<p>
+Choisis les deux bonnes couleurs.
+</p>
+
+<div class="choice-row">
+
+<button
+    type="button"
+    class="color-btn color-pink"
+    onclick="colorChoice('rose')"
+>
+rose
+</button>
+
+<button
+    type="button"
+    class="color-btn color-red"
+    onclick="colorChoice('rouge')"
+>
+rouge
+</button>
+
+</div>
+
+<div class="choice-row">
+
+<button
+    type="button"
+    class="color-btn color-green"
+    onclick="colorChoice('vert')"
+>
+vert
+</button>
+
+<button
+    type="button"
+    class="color-btn color-blue"
+    onclick="colorChoice('bleu')"
+>
+bleu
+</button>
+
+</div>
+
+<div id="result9" class="result"></div>
+
+</div>
+
+
+<!-- EPREUVE 10 -->
+
+<div id="game10" class="game hidden">
+
+<h2>Dernière épreuve</h2>
+
+<p>
+Écris exactement son prénom.
+</p>
+
+<div
+    class="highlight"
+    style="font-size:32px"
+>
+CELENA
+</div>
+
+<input
+    id="celenaInput"
+    type="text"
+    placeholder="écris ici"
+>
+
+<button type="button" onclick="finalGame()">
+valider
+</button>
+
+<div id="result10" class="result"></div>
+
+</div>
+
+
+<!-- FIN -->
+
+<div
+    id="ending"
+    class="game hidden"
+>
+
+<div class="final-message">
+
+<h2>
+T'as réussi.
+</h2>
+
+<p>
+Après toutes ces épreuves,
+je peux enfin arrêter de te faire galérer.
+</p>
+
+<p>
+J'ai passé 32h à faire ce site juste pour toi.
+</p>
+
+<p>
+Je voulais faire quelque chose que tu n'allais pas
+juste regarder deux secondes puis oublier.
+</p>
+
+<p>
+Même si j'ai probablement passé beaucoup trop de temps
+à trouver des idées complètement débiles.
+</p>
+
+<p>
+Mais au fond c'était juste pour te faire sourire.
+</p>
+
+<p class="highlight">
+Ma p'tite italienne.
+</p>
+
+<br>
+
+<div class="final-love">
+je t'aime celena❤️
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RONALDO -->
+
+<div
+    id="ronaldoPage"
+    class="ronaldo-page hidden"
+>
+
+<div class="ronaldo-box">
+
+<div class="ronaldo-face">
+
+<div class="tear left"></div>
+<div class="tear right"></div>
+
+<div class="ronaldo-mouth"></div>
+
+</div>
+
+<div class="ronaldo-title">
+RONALDO EST EN LARMES
+</div>
+
+<p>
+Tu as cliqué sur "je t'aime pas".
+</p>
+
+<p>
+Regarde ce que t'as fait.
+</p>
+
+<p class="locked">
+Cette page est bloquée.
+<br><br>
+Rafraîchis la page pour recommencer.
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ANIMATION DES RESULTATS */
+
+function animateResult(element,text,type){
+
+    if(!element)return;
+
+    element.classList.remove("success","fail");
+
+    void element.offsetWidth;
+
+    element.innerHTML=text;
+
+    element.classList.add(type);
+
+    if(type==="fail"){
+
+        document.body.classList.remove("shake");
+
+        void document.body.offsetWidth;
+
+        document.body.classList.add("shake");
+    }
+}
+
+
+/* MOT DE PASSE */
+
+function checkPassword(){
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const message =
+        document.getElementById("message");
+
+    const intro =
+        document.getElementById("intro");
+
+    const games =
+        document.getElementById("games");
+
+    if(!passwordInput){
+
+        console.error("Champ password introuvable");
+
+        return;
+    }
+
+    const enteredPassword =
+        passwordInput.value
+        .trim()
+        .toLowerCase();
+
+    if(enteredPassword==="aiko"){
+
+        intro.classList.add("hidden");
+
+        games.classList.remove("hidden");
+
+        message.innerHTML="";
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        animateResult(
+            message,
+            "non non non... c'est pas ça",
+            "fail"
+        );
+    }
+}
+
+
+/* INDICES */
+
+function showHint(){
+
+    document
+        .getElementById("hintBox")
+        .classList
+        .remove("hidden");
+}
+
+function troll(number){
+
+    const texts={
+        1:"Indice : ça commence par A.",
+        2:"Indice : t'es littéralement en train de le chercher.",
+        3:"Celui-là servait à rien mdrr.",
+        4:"AIKO. voilà maintenant avance."
+    };
+
+    animateResult(
+        document.getElementById("trollResult"),
+        texts[number],
+        number===4 ? "success" : "fail"
+    );
+}
+
+
+/* EPREUVE 1 */
+
+let loveCount=0;
+
+function loveClick(){
+
+    loveCount++;
+
+    document
+        .getElementById("loveProgress")
+        .style.width=(loveCount*10)+"%";
+
+    if(loveCount===9){
+
+        const yes =
+            document.getElementById("yesBtn");
+
+        const no =
+            document.getElementById("noBtn");
+
+        yes.style.left="50%";
+        yes.style.transform="translateX(-50%)";
+
+        no.style.left="0";
+        no.style.right="auto";
+
+        yes.classList.add("swap");
+        no.classList.add("swap");
+
+        animateResult(
+            document.getElementById("loveResult"),
+            "regarde bien... les places ont changé",
+            "success"
+        );
+    }
+
+    if(loveCount>=10){
+
+        animateResult(
+            document.getElementById("loveResult"),
+            "épreuve validée",
+            "success"
+        );
+
+        document
+            .getElementById("game3")
+            .classList
+            .remove("hidden");
+    }
+}
+
+function loveNo(){
+
+    document
+        .getElementById("ronaldoPage")
+        .classList
+        .remove("hidden");
+}
+
+
+/* EPREUVE 3 */
+
+function choice3(choice){
+
+    if(choice==="moi"){
+
+        animateResult(
+            document.getElementById("result3"),
+            "bonne réponse. tu commences bien.",
+            "success"
+        );
+
+        document
+            .getElementById("game4")
+            .classList
+            .remove("hidden");
+
+        setTimeout(startReflex,500);
+
+    }else{
+
+        animateResult(
+            document.getElementById("result3"),
+            "Yanis ? vraiment ? recommence.",
+            "fail"
+        );
+    }
+}
+
+
+/* EPREUVE 4 */
+
+let reflexReady=false;
+let reflexTimer=null;
+let reflexRunning=false;
+
+function startReflex(){
+
+    if(reflexRunning)return;
+
+    reflexRunning=true;
+
+    const box =
+        document.getElementById("reflex");
+
+    box.style.background="#d51f3f";
+    box.innerHTML="ROUGE";
+
+    const delay=
+        Math.random()*5000+1800;
+
+    reflexTimer=setTimeout(()=>{
+
+        if(!reflexRunning)return;
+
+        reflexReady=true;
+
+        box.style.background="#20bd6b";
+        box.innerHTML="VERT";
+
+        const greenTime=
+            Math.random()*180+120;
+
+        setTimeout(()=>{
+
+            if(!reflexRunning)return;
+
+            reflexReady=false;
+
+            box.style.background="#d51f3f";
+            box.innerHTML="ROUGE";
+
+            reflexRunning=false;
+
+            startReflex();
+
+        },greenTime);
+
+    },delay);
+}
+
+function reflexClick(){
+
+    if(reflexReady){
+
+        reflexRunning=false;
+
+        clearTimeout(reflexTimer);
+
+        animateResult(
+            document.getElementById("result4"),
+            "T'AS RÉUSSI. bien joué.",
+            "success"
+        );
+
+        document
+            .getElementById("game5")
+            .classList
+            .remove("hidden");
+
+    }else{
+
+        animateResult(
+            document.getElementById("result4"),
+            "trop tôt. attends le vert.",
+            "fail"
+        );
+    }
+}
+
+
+/* EPREUVE 5 */
+
+function sentence(correct){
+
+    if(correct){
+
+        animateResult(
+            document.getElementById("result5"),
+            "évidemment. enfin une réponse intelligente.",
+            "success"
+        );
+
+        document
+            .getElementById("game6")
+            .classList
+            .remove("hidden");
+
+    }else{
+
+        animateResult(
+            document.getElementById("result5"),
+            "t'es sérieuse là ? recommence.",
+            "fail"
+        );
+    }
+}
+
+
+/* EPREUVE 6 */
+
+let holdInterval=null;
+let holdValue=0;
+
+function startHold(){
+
+    if(holdInterval)return;
+
+    holdInterval=setInterval(()=>{
+
+        holdValue+=2;
+
+        document
+            .getElementById("holdFill")
+            .style.width=holdValue+"%";
+
+        if(holdValue>=100){
+
+            clearInterval(holdInterval);
+            holdInterval=null;
+
+            animateResult(
+                document.getElementById("result6"),
+                "barre remplie. épreuve validée.",
+                "success"
+            );
+
+            document
+                .getElementById("game7")
+                .classList
+                .remove("hidden");
+        }
+
+    },80);
+}
+
+function stopHold(){
+
+    if(holdValue>=100)return;
+
+    clearInterval(holdInterval);
+
+    holdInterval=null;
+
+    holdValue=0;
+
+    document
+        .getElementById("holdFill")
+        .style.width="0%";
+
+    animateResult(
+        document.getElementById("result6"),
+        "t'as lâché. toute la barre revient à zéro.",
+        "fail"
+    );
+}
+
+
+/* EPREUVE 7 */
+
+function girlChoice(choice){
+
+    if(choice==="celena"){
+
+        animateResult(
+            document.getElementById("result7"),
+            "bonne réponse. heureusement.",
+            "success"
+        );
+
+        document
+            .getElementById("game8")
+            .classList
+            .remove("hidden");
+
+    }else{
+
+        animateResult(
+            document.getElementById("result7"),
+            "les filles des favelas ? t'as vraiment osé.",
+            "fail"
+        );
+    }
+}
+
+
+/* EPREUVE 8 */
+
+function foundSecretHeart(){
+
+    animateResult(
+        document.getElementById("result8"),
+        "T'AS TROUVÉ LE PETIT COEUR. bien joué.",
+        "success"
+    );
+
+    document
+        .getElementById("game9")
+        .classList
+        .remove("hidden");
+}
+
+
+/* EPREUVE 9 */
+
+let colorsFound=[];
+
+function colorChoice(color){
+
+    if(color==="rose" || color==="vert"){
+
+        if(!colorsFound.includes(color)){
+            colorsFound.push(color);
+        }
+
+        if(colorsFound.length===1){
+
+            animateResult(
+                document.getElementById("result9"),
+                "une bonne couleur. il en reste une.",
+                "success"
+            );
+
+        }else if(colorsFound.length===2){
+
+            animateResult(
+                document.getElementById("result9"),
+                "les deux bonnes couleurs. validé.",
+                "success"
+            );
+
+            document
+                .getElementById("game10")
+                .classList
+                .remove("hidden");
+        }
+
+    }else{
+
+        animateResult(
+            document.getElementById("result9"),
+            "mauvaise couleur. cherche encore.",
+            "fail"
+        );
+    }
+}
+
+
+/* EPREUVE 10 */
+
+function finalGame(){
+
+    const input =
+        document.getElementById("celenaInput");
+
+    const value =
+        input.value.trim().toUpperCase();
+
+    if(value==="CELENA"){
+
+        animateResult(
+            document.getElementById("result10"),
+            "dernière épreuve validée.",
+            "success"
+        );
+
+        document
+            .getElementById("ending")
+            .classList
+            .remove("hidden");
+
+        setTimeout(()=>{
+
+            window.scrollTo({
+                top:document.body.scrollHeight,
+                behavior:"smooth"
+            });
+
+        },300);
+
+    }else{
+
+        animateResult(
+            document.getElementById("result10"),
+            "c'est pas compliqué pourtant... CELENA.",
+            "fail"
+        );
+    }
+}
+
+</script>
+
+</body>
+</html>
