@@ -3,14 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Pour Celena</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -19,39 +25,37 @@ body{
     font-family:Poppins,sans-serif;
     color:white;
     background:
-        radial-gradient(circle at 50% -10%,#ffb9dc 0%,transparent 35%),
-        radial-gradient(circle at 0% 100%,#700044 0%,transparent 30%),
-        linear-gradient(135deg,#10000d,#3d0029,#12000f);
+        radial-gradient(circle at 50% -10%,#ffb8da 0%,transparent 35%),
+        radial-gradient(circle at 0% 100%,#720047 0%,transparent 35%),
+        linear-gradient(135deg,#10000d,#3b0028,#12000f);
     overflow-x:hidden;
-    transition:.3s;
 }
 
-body.shake{
-    animation:shake .35s ease;
+button,
+input{
+    font-family:inherit;
 }
 
-@keyframes shake{
-    0%,100%{transform:translateX(0)}
-    20%{transform:translateX(-8px)}
-    40%{transform:translateX(8px)}
-    60%{transform:translateX(-6px)}
-    80%{transform:translateX(6px)}
+button{
+    cursor:pointer;
+    -webkit-user-select:none;
+    user-select:none;
 }
 
 .hearts{
     position:fixed;
     inset:0;
-    pointer-events:none;
     overflow:hidden;
+    pointer-events:none;
     z-index:0;
 }
 
 .heart{
     position:absolute;
-    top:-50px;
-    color:#ff8fc7;
+    top:-40px;
+    color:#ff86c4;
     font-size:20px;
-    opacity:.8;
+    opacity:.75;
     animation:fall linear infinite;
 }
 
@@ -60,7 +64,11 @@ body.shake{
         transform:translateY(-50px) rotate(0deg);
         opacity:0;
     }
-    10%{opacity:.8}
+
+    10%{
+        opacity:.8;
+    }
+
     100%{
         transform:translateY(110vh) rotate(360deg);
         opacity:0;
@@ -71,38 +79,38 @@ body.shake{
     position:relative;
     z-index:2;
     width:92%;
-    max-width:520px;
+    max-width:540px;
     margin:auto;
-    padding:30px 0 70px;
+    padding:25px 0 70px;
 }
 
 .card{
-    background:rgba(255,255,255,.09);
-    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.20);
     backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
     border-radius:30px;
-    padding:28px 20px;
-    text-align:center;
-    box-shadow:0 25px 80px rgba(0,0,0,.45);
+    padding:28px 18px;
+    box-shadow:0 25px 80px rgba(0,0,0,.4);
 }
 
 h1{
     font-family:"Great Vibes",cursive;
-    font-size:76px;
+    font-size:72px;
     font-weight:400;
-    margin:0;
     color:#ff9dce;
     text-shadow:0 0 25px rgba(255,120,190,.7);
+    margin:0 0 10px;
 }
 
 .subtitle{
     font-size:13px;
-    opacity:.6;
+    opacity:.65;
 }
 
 .love{
-    font-size:16px;
     line-height:1.75;
+    font-size:16px;
     margin:25px 0;
 }
 
@@ -113,33 +121,33 @@ h1{
 
 hr{
     border:0;
-    border-top:1px solid rgba(255,255,255,.13);
+    border-top:1px solid rgba(255,255,255,.15);
     margin:28px 0;
 }
 
 input{
     width:100%;
-    padding:16px;
     border:0;
-    border-radius:15px;
     outline:none;
+    border-radius:15px;
+    padding:16px;
     font-size:16px;
     text-align:center;
 }
 
-button{
+.main-btn,
+.choice-btn{
     width:100%;
-    padding:15px;
-    margin-top:12px;
     border:0;
     border-radius:15px;
-    background:linear-gradient(135deg,#ff75b8,#ff429f);
+    padding:15px;
+    margin-top:12px;
     color:white;
     font-size:16px;
     font-weight:700;
-    cursor:pointer;
-    transition:.2s;
-    box-shadow:0 8px 25px rgba(255,70,160,.2);
+    background:linear-gradient(135deg,#ff75b8,#ff429f);
+    box-shadow:0 8px 25px rgba(255,70,160,.22);
+    transition:transform .2s,opacity .2s;
 }
 
 button:active{
@@ -164,8 +172,9 @@ button:active{
 @keyframes appear{
     from{
         opacity:0;
-        transform:translateY(20px) scale(.96);
+        transform:translateY(20px) scale(.97);
     }
+
     to{
         opacity:1;
         transform:translateY(0) scale(1);
@@ -174,18 +183,19 @@ button:active{
 
 .game{
     margin-top:25px;
-    padding:20px;
-    border-radius:22px;
+    padding:22px 18px;
+    border-radius:24px;
     background:rgba(0,0,0,.18);
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.09);
     animation:gameAppear .5s ease;
 }
 
 @keyframes gameAppear{
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(25px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
@@ -194,6 +204,7 @@ button:active{
 
 .game h2{
     margin-top:0;
+    font-size:28px;
 }
 
 .small{
@@ -203,16 +214,16 @@ button:active{
 
 .result{
     min-height:28px;
-    margin-top:15px;
+    margin-top:16px;
     font-weight:600;
 }
 
 .success{
-    animation:success .55s ease;
+    animation:success .5s ease;
 }
 
 .fail{
-    animation:fail .5s ease;
+    animation:fail .45s ease;
 }
 
 @keyframes success{
@@ -220,9 +231,11 @@ button:active{
         transform:scale(.7);
         opacity:0;
     }
+
     60%{
-        transform:scale(1.12);
+        transform:scale(1.1);
     }
+
     100%{
         transform:scale(1);
         opacity:1;
@@ -230,21 +243,49 @@ button:active{
 }
 
 @keyframes fail{
-    0%{transform:translateX(0)}
-    25%{transform:translateX(-10px)}
-    50%{transform:translateX(10px)}
-    75%{transform:translateX(-7px)}
-    100%{transform:translateX(0)}
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-9px);
+    }
+
+    50%{
+        transform:translateX(9px);
+    }
+
+    75%{
+        transform:translateX(-6px);
+    }
 }
 
-.choice-row{
-    display:flex;
-    gap:10px;
+.shake{
+    animation:bodyShake .35s ease;
 }
 
-.choice-row button{
-    flex:1;
+@keyframes bodyShake{
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-7px);
+    }
+
+    50%{
+        transform:translateX(7px);
+    }
+
+    75%{
+        transform:translateX(-5px);
+    }
 }
+
+
+/* =========================
+   EPREUVE 1
+========================= */
 
 .progress{
     width:100%;
@@ -252,218 +293,322 @@ button:active{
     background:rgba(255,255,255,.12);
     border-radius:20px;
     overflow:hidden;
-    margin:18px 0;
+    margin:20px 0;
 }
 
 .progress-bar{
     width:0%;
     height:100%;
-    background:linear-gradient(90deg,#ff5eaa,#ffb1d6);
-    border-radius:20px;
-    transition:.15s;
+    background:linear-gradient(90deg,#ff4da8,#ffb5da);
+    transition:width .2s;
 }
 
+/*
+IMPORTANT :
+les boutons ont flex:1
+et aucune largeur fixe.
+Ils ne peuvent donc plus
+se chevaucher sur mobile.
+*/
+
 .love-buttons{
-    position:relative;
-    min-height:130px;
+    display:flex;
+    flex-direction:row;
+    align-items:stretch;
+    gap:10px;
+    width:100%;
 }
 
 .love-buttons button{
-    width:48%;
+    flex:1 1 0;
+    min-width:0;
+    width:auto;
+    margin:0;
+    border:0;
+    border-radius:15px;
+    padding:15px 7px;
+    color:white;
+    font-size:15px;
+    font-weight:700;
+    background:linear-gradient(135deg,#ff75b8,#ff429f);
+    box-shadow:0 8px 25px rgba(255,70,160,.2);
+}
+
+.exchange{
+    animation:exchange .55s ease;
+}
+
+@keyframes exchange{
+    0%{
+        opacity:1;
+    }
+
+    30%{
+        transform:scale(.9);
+        opacity:.5;
+    }
+
+    70%{
+        transform:scale(1.05);
+        opacity:.8;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+
+/* =========================
+   EPREUVE 2
+========================= */
+
+.trap-zone{
+    position:relative;
+    height:190px;
+    margin-top:18px;
+    border-radius:20px;
+    background:rgba(255,255,255,.05);
+    overflow:hidden;
+}
+
+.trap-btn{
     position:absolute;
-    top:0;
+    width:145px;
+    margin:0;
+    transition:left .18s,top .18s,transform .15s;
 }
 
-#yesBtn{
-    left:0;
+.trap-btn:hover{
+    transform:scale(1.03);
 }
 
-#noBtn{
-    right:0;
+
+/* =========================
+   CHOIX
+========================= */
+
+.choice-row{
+    display:flex;
+    gap:10px;
+    width:100%;
 }
 
-.swap{
-    animation:swap .4s ease;
+.choice-row button{
+    flex:1 1 0;
+    min-width:0;
 }
 
-@keyframes swap{
-    0%{transform:scale(1)}
-    50%{transform:scale(1.15) rotate(4deg)}
-    100%{transform:scale(1)}
-}
+
+/* =========================
+   EPREUVE 4
+========================= */
 
 .reflex{
-    height:100px;
+    height:110px;
     border-radius:20px;
-    background:#d51f3f;
+    background:#d71e40;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    font-size:20px;
     font-weight:800;
-    font-size:18px;
     user-select:none;
-    transition:background .03s;
+    touch-action:manipulation;
 }
 
-.hold-area{
-    padding:15px;
-    border-radius:18px;
-    background:rgba(255,255,255,.06);
-}
+
+/* =========================
+   EPREUVE 6
+========================= */
 
 .hold-progress{
     height:25px;
     background:rgba(255,255,255,.12);
-    border-radius:15px;
+    border-radius:20px;
     overflow:hidden;
-    margin-bottom:12px;
+    margin:20px 0 12px;
 }
 
 .hold-fill{
     width:0%;
     height:100%;
-    background:linear-gradient(90deg,#ff4da8,#ffb3d8);
+    background:linear-gradient(90deg,#ff4da8,#ffb4d9);
     transition:width .05s linear;
 }
 
 #holdBtn{
-    user-select:none;
     touch-action:none;
 }
 
+
+/* =========================
+   EPREUVE 7
+========================= */
+
 .girl-choice{
-    border:2px solid transparent;
+    min-height:100px;
+    font-size:16px;
 }
 
-.secret-heart-area{
+.big-letter{
+    display:block;
+    font-size:40px;
+    margin-bottom:5px;
+}
+
+
+/* =========================
+   EPREUVE 8
+========================= */
+
+.secret-area{
     position:relative;
-    height:170px;
-    margin-top:10px;
+    height:180px;
+    border-radius:20px;
     overflow:hidden;
-    border-radius:18px;
+    background:rgba(255,255,255,.035);
 }
 
 .tiny-heart{
     position:absolute;
-    font-size:9px;
-    color:#ff83c2;
+    font-size:8px;
+    color:#ff8ac5;
+    opacity:.65;
     cursor:pointer;
-    opacity:.85;
 }
+
+
+/* =========================
+   EPREUVE 9
+========================= */
 
 .color-btn{
-    min-height:55px;
+    min-height:60px;
 }
 
-.color-pink{
-    background:#ff4fa8;
+.pink{
+    background:#ff4fa8!important;
 }
 
-.color-red{
-    background:#e51c46;
+.red{
+    background:#df2047!important;
 }
 
-.color-green{
-    background:#20ad67;
+.green{
+    background:#20aa67!important;
 }
 
-.color-blue{
-    background:#3289e8;
+.blue{
+    background:#3289e8!important;
 }
 
-.final-message{
-    padding:28px 20px;
-    border-radius:25px;
-    background:rgba(255,255,255,.08);
-    line-height:1.8;
-}
 
-.final-love{
-    font-family:"Great Vibes",cursive;
-    font-size:48px;
-    color:#ff91c8;
-    text-shadow:0 0 20px rgba(255,120,190,.6);
-}
+/* =========================
+   PAGE HAMOUDA
+========================= */
 
-.ronaldo-page{
+.hamouda-page{
     position:fixed;
     inset:0;
-    z-index:99999;
+    z-index:100;
     background:#050505;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
+    padding:25px;
 }
 
-.ronaldo-box{
-    width:90%;
-    max-width:450px;
+.hamouda-content{
+    max-width:500px;
 }
 
-.ronaldo-face{
-    width:210px;
-    height:210px;
-    border-radius:50%;
-    margin:auto;
-    position:relative;
-    background:
-        radial-gradient(circle at 35% 38%,#111 0 7%,transparent 8%),
-        radial-gradient(circle at 65% 38%,#111 0 7%,transparent 8%),
-        #b97a55;
-    border:8px solid #111;
-}
-
-.tear{
-    position:absolute;
-    width:9px;
-    height:58px;
-    background:#55cfff;
-    border-radius:50%;
-    top:70px;
-}
-
-.tear.left{left:53px}
-.tear.right{right:53px}
-
-.ronaldo-mouth{
-    position:absolute;
-    width:70px;
-    height:25px;
-    border-bottom:6px solid #111;
-    border-radius:50%;
-    bottom:45px;
-    left:65px;
-}
-
-.ronaldo-title{
-    font-size:30px;
+.hamouda-title{
+    font-size:40px;
     font-weight:800;
+    margin-bottom:20px;
+}
+
+.hamouda-text{
+    font-size:18px;
+    line-height:1.7;
+    opacity:.85;
+}
+
+.refresh{
+    margin-top:25px;
+    font-size:14px;
+    opacity:.55;
+}
+
+
+/* =========================
+   FIN
+========================= */
+
+.final-message{
+    line-height:1.8;
+    padding:10px;
+}
+
+.final-love{
+    font-family:"Great Vibes",cursive;
+    font-size:52px;
+    color:#ff91c8;
+    text-shadow:0 0 20px rgba(255,120,190,.7);
     margin-top:25px;
 }
 
-.locked{
-    color:#aaa;
-    line-height:1.6;
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:380px){
+
+    h1{
+        font-size:60px;
+    }
+
+    .love-buttons{
+        gap:7px;
+    }
+
+    .love-buttons button{
+        font-size:13px;
+        padding:14px 4px;
+    }
+
+    .game{
+        padding:19px 14px;
+    }
+
+    .choice-row{
+        gap:7px;
+    }
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <div class="hearts">
 
-<span class="heart" style="left:3%;animation-duration:7s">♥</span>
-<span class="heart" style="left:11%;animation-duration:9s;animation-delay:2s">♡</span>
-<span class="heart" style="left:20%;animation-duration:6s;animation-delay:1s">♥</span>
-<span class="heart" style="left:30%;animation-duration:8s;animation-delay:3s">♡</span>
-<span class="heart" style="left:40%;animation-duration:10s">♥</span>
-<span class="heart" style="left:50%;animation-duration:7s;animation-delay:4s">♡</span>
-<span class="heart" style="left:60%;animation-duration:9s">♥</span>
-<span class="heart" style="left:70%;animation-duration:6s;animation-delay:2s">♡</span>
-<span class="heart" style="left:80%;animation-duration:8s">♥</span>
-<span class="heart" style="left:90%;animation-duration:10s;animation-delay:3s">♡</span>
+<span class="heart" style="left:4%;animation-duration:7s">♥</span>
+<span class="heart" style="left:13%;animation-duration:9s;animation-delay:2s">♡</span>
+<span class="heart" style="left:22%;animation-duration:6s;animation-delay:1s">♥</span>
+<span class="heart" style="left:32%;animation-duration:8s;animation-delay:3s">♡</span>
+<span class="heart" style="left:43%;animation-duration:10s">♥</span>
+<span class="heart" style="left:54%;animation-duration:7s;animation-delay:4s">♡</span>
+<span class="heart" style="left:65%;animation-duration:9s">♥</span>
+<span class="heart" style="left:76%;animation-duration:6s;animation-delay:2s">♡</span>
+<span class="heart" style="left:87%;animation-duration:8s">♥</span>
+<span class="heart" style="left:95%;animation-duration:10s;animation-delay:3s">♡</span>
 
 </div>
 
@@ -472,24 +617,35 @@ button:active{
 
 <div class="card">
 
+
+<!-- =========================
+     INTRO
+========================= -->
+
 <div id="intro">
 
-<div class="subtitle">
+<p class="subtitle">
 ce site est probablement une mauvaise idée
-</div>
+</p>
 
-<h1>Celena</h1>
+<h1>
+Celena
+</h1>
 
 <div class="love">
 
 Si ta ouvert le liens c'est que t'es
-<span class="highlight">curieuse de fou</span>
+<span class="highlight">
+curieuse de fou
+</span>
 et ta confiance en moi déjà.
 
 <br><br>
 
 Et sans mentir j'ai fait tout ça juste pour toi
-<span class="highlight">(ma p'tite italienne)</span>
+<span class="highlight">
+(ma p'tite italienne)
+</span>
 
 <br><br>
 
@@ -515,7 +671,7 @@ j'ai essayé de faire biens.
 Bon maintenant faut passer le contrôle de sécurité.
 </p>
 
-<p class="subtitle">
+<p class="small">
 mot de passe requis pour continuer
 </p>
 
@@ -525,52 +681,85 @@ mot de passe requis pour continuer
     placeholder="écris le mot de passe"
 >
 
-<button type="button" onclick="checkPassword()">
+<button
+    class="main-btn"
+    type="button"
+    onclick="checkPassword()"
+>
 continuer
 </button>
 
 <button
+    class="main-btn secondary"
     type="button"
-    class="secondary"
     onclick="showHint()"
 >
 donner un indice ?
 </button>
 
-<div id="message" class="result"></div>
+<div
+    id="message"
+    class="result"
+></div>
 
-<div id="hintBox" class="game hidden">
+
+<div
+    id="hintBox"
+    class="game hidden"
+>
 
 <p>
 T'es vraiment déterminée toi.
 </p>
 
-<button type="button" onclick="troll(1)">
+<button
+    class="choice-btn"
+    onclick="troll(1)"
+>
 indice 1
 </button>
 
-<button type="button" onclick="troll(2)">
+<button
+    class="choice-btn"
+    onclick="troll(2)"
+>
 indice 2
 </button>
 
-<button type="button" onclick="troll(3)">
+<button
+    class="choice-btn"
+    onclick="troll(3)"
+>
 indice 3
 </button>
 
-<button type="button" onclick="troll(4)">
+<button
+    class="choice-btn"
+    onclick="troll(4)"
+>
 indice 4
 </button>
 
-<div id="trollResult" class="result"></div>
+<div
+    id="trollResult"
+    class="result"
+></div>
 
 </div>
 
 </div>
 
 
-<div id="games" class="hidden page">
+<!-- =========================
+     JEUX
+========================= -->
 
-<h1 style="font-size:55px">
+<div
+    id="games"
+    class="hidden page"
+>
+
+<h1 style="font-size:56px">
 Les épreuves
 </h1>
 
@@ -583,25 +772,36 @@ malheureusement pour toi non
 </p>
 
 
-<!-- EPREUVE 1 -->
+<!-- =========================
+     EPREUVE 1
+========================= -->
 
 <div class="game">
 
-<h2>Épreuve 1</h2>
+<h2>
+Épreuve 1
+</h2>
 
 <p>
 Clique 10 fois sur
-<span class="highlight">je t'aime</span>
+<span class="highlight">
+je t'aime
+</span>
 </p>
 
 <div class="progress">
-<div id="loveProgress" class="progress-bar"></div>
+<div
+    id="loveProgress"
+    class="progress-bar"
+></div>
 </div>
 
-<div class="love-buttons">
+<div
+    id="loveButtons"
+    class="love-buttons"
+>
 
 <button
-    type="button"
     id="yesBtn"
     onclick="loveClick()"
 >
@@ -609,7 +809,6 @@ je t'aime
 </button>
 
 <button
-    type="button"
     id="noBtn"
     onclick="loveNo()"
 >
@@ -618,16 +817,89 @@ je t'aime pas
 
 </div>
 
-<div id="loveResult" class="result"></div>
+<div
+    id="loveResult"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- EPREUVE 3 -->
+<!-- =========================
+     EPREUVE 2
+========================= -->
 
-<div id="game3" class="game hidden">
+<div
+    id="game2"
+    class="game hidden"
+>
 
-<h2>Épreuve 3</h2>
+<h2>
+Épreuve 2
+</h2>
+
+<p>
+Trouve le bouton qui dit la vérité.
+</p>
+
+<p class="small">
+Attention, certains boutons sont là juste pour te faire perdre ton temps.
+</p>
+
+<div
+    id="trapZone"
+    class="trap-zone"
+>
+
+<button
+    id="trapCorrect"
+    class="trap-btn main-btn"
+    onclick="correctTrap()"
+    style="left:50%;top:65px;transform:translateX(-50%)"
+>
+c'est moi le bon
+</button>
+
+<button
+    id="trapFake1"
+    class="trap-btn main-btn"
+    onclick="fakeTrap()"
+    style="left:10px;top:15px"
+>
+clique ici
+</button>
+
+<button
+    id="trapFake2"
+    class="trap-btn main-btn"
+    onclick="fakeTrap()"
+    style="right:10px;top:15px"
+>
+pas celui-là
+</button>
+
+</div>
+
+<div
+    id="result2"
+    class="result"
+></div>
+
+</div>
+
+
+<!-- =========================
+     EPREUVE 3
+========================= -->
+
+<div
+    id="game3"
+    class="game hidden"
+>
+
+<h2>
+Épreuve 3
+</h2>
 
 <p>
 Tu préfère être avec...
@@ -635,26 +907,42 @@ Tu préfère être avec...
 
 <div class="choice-row">
 
-<button type="button" onclick="choice3('moi')">
+<button
+    class="choice-btn"
+    onclick="choice3('moi')"
+>
 moi
 </button>
 
-<button type="button" onclick="choice3('yanis')">
+<button
+    class="choice-btn"
+    onclick="choice3('yanis')"
+>
 Yanis
 </button>
 
 </div>
 
-<div id="result3" class="result"></div>
+<div
+    id="result3"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- EPREUVE 4 -->
+<!-- =========================
+     EPREUVE 4
+========================= -->
 
-<div id="game4" class="game hidden">
+<div
+    id="game4"
+    class="game hidden"
+>
 
-<h2>Épreuve 4</h2>
+<h2>
+Épreuve 4
+</h2>
 
 <p>
 Le rectangle reste rouge.
@@ -665,8 +953,8 @@ D'un coup il devient vert.
 </p>
 
 <p class="small">
-Clique exactement quand il est vert.
-Il ne le restera que quelques instants.
+Clique exactement au bon moment.
+Il devient vert pendant très peu de temps.
 </p>
 
 <div
@@ -677,16 +965,26 @@ Il ne le restera que quelques instants.
 ROUGE
 </div>
 
-<div id="result4" class="result"></div>
+<div
+    id="result4"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- EPREUVE 5 -->
+<!-- =========================
+     EPREUVE 5
+========================= -->
 
-<div id="game5" class="game hidden">
+<div
+    id="game5"
+    class="game hidden"
+>
 
-<h2>Épreuve 5</h2>
+<h2>
+Épreuve 5
+</h2>
 
 <p>
 Complète :
@@ -698,32 +996,46 @@ Celena est...
 
 <div class="choice-row">
 
-<button type="button" onclick="sentence(true)">
+<button
+    class="choice-btn"
+    onclick="sentence(true)"
+>
 belle
 </button>
 
-<button type="button" onclick="sentence(false)">
+<button
+    class="choice-btn"
+    onclick="sentence(false)"
+>
 moche
 </button>
 
 </div>
 
-<div id="result5" class="result"></div>
+<div
+    id="result5"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- EPREUVE 6 -->
+<!-- =========================
+     EPREUVE 6
+========================= -->
 
-<div id="game6" class="game hidden">
+<div
+    id="game6"
+    class="game hidden"
+>
 
-<h2>Épreuve 6</h2>
+<h2>
+Épreuve 6
+</h2>
 
 <p>
 Maintiens le bouton jusqu'à remplir entièrement la barre.
 </p>
-
-<div class="hold-area">
 
 <div class="hold-progress">
 
@@ -735,8 +1047,8 @@ Maintiens le bouton jusqu'à remplir entièrement la barre.
 </div>
 
 <button
-    type="button"
     id="holdBtn"
+    class="main-btn"
     onpointerdown="startHold()"
     onpointerup="stopHold()"
     onpointercancel="stopHold()"
@@ -745,66 +1057,90 @@ Maintiens le bouton jusqu'à remplir entièrement la barre.
 maintenir
 </button>
 
+<div
+    id="result6"
+    class="result"
+></div>
+
 </div>
 
-<div id="result6" class="result"></div>
 
-</div>
+<!-- =========================
+     EPREUVE 7
+========================= -->
 
+<div
+    id="game7"
+    class="game hidden"
+>
 
-<!-- EPREUVE 7 -->
-
-<div id="game7" class="game hidden">
-
-<h2>Épreuve 7</h2>
+<h2>
+Épreuve 7
+</h2>
 
 <p>
-Qui choisis-tu ?
+c'est quoi le meilleurs ?
 </p>
 
 <div class="choice-row">
 
 <button
-    type="button"
-    class="girl-choice"
+    class="choice-btn girl-choice"
     onclick="girlChoice('celena')"
 >
-<div style="font-size:38px">C</div>
+
+<span class="big-letter">C</span>
+
 Celena
+
 </button>
 
 <button
-    type="button"
-    class="girl-choice"
+    class="choice-btn girl-choice"
     onclick="girlChoice('favelas')"
 >
-<div style="font-size:38px">F</div>
+
+<span class="big-letter">F</span>
+
 Les filles des favelas
+
 </button>
 
 </div>
 
-<div id="result7" class="result"></div>
+<div
+    id="result7"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- EPREUVE 8 -->
+<!-- =========================
+     EPREUVE 8
+========================= -->
 
-<div id="game8" class="game hidden">
+<div
+    id="game8"
+    class="game hidden"
+>
 
-<h2>Épreuve 8</h2>
+<h2>
+Épreuve 8
+</h2>
 
 <p>
-Un petit cœur est caché quelque part.
+Un tout petit cœur est caché dans cette zone.
 </p>
 
 <p class="small">
-Il est minuscule.
+Il est vraiment minuscule.
 Bonne chance.
 </p>
 
-<div class="secret-heart-area">
+<div
+    class="secret-area"
+>
 
 <span
     class="tiny-heart"
@@ -816,16 +1152,26 @@ Bonne chance.
 
 </div>
 
-<div id="result8" class="result"></div>
+<div
+    id="result8"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- EPREUVE 9 -->
+<!-- =========================
+     EPREUVE 9
+========================= -->
 
-<div id="game9" class="game hidden">
+<div
+    id="game9"
+    class="game hidden"
+>
 
-<h2>Épreuve 9</h2>
+<h2>
+Épreuve 9
+</h2>
 
 <p>
 Choisis les deux bonnes couleurs.
@@ -834,16 +1180,14 @@ Choisis les deux bonnes couleurs.
 <div class="choice-row">
 
 <button
-    type="button"
-    class="color-btn color-pink"
+    class="choice-btn color-btn pink"
     onclick="colorChoice('rose')"
 >
 rose
 </button>
 
 <button
-    type="button"
-    class="color-btn color-red"
+    class="choice-btn color-btn red"
     onclick="colorChoice('rouge')"
 >
 rouge
@@ -854,16 +1198,14 @@ rouge
 <div class="choice-row">
 
 <button
-    type="button"
-    class="color-btn color-green"
+    class="choice-btn color-btn green"
     onclick="colorChoice('vert')"
 >
 vert
 </button>
 
 <button
-    type="button"
-    class="color-btn color-blue"
+    class="choice-btn color-btn blue"
     onclick="colorChoice('bleu')"
 >
 bleu
@@ -871,16 +1213,26 @@ bleu
 
 </div>
 
-<div id="result9" class="result"></div>
+<div
+    id="result9"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- EPREUVE 10 -->
+<!-- =========================
+     EPREUVE 10
+========================= -->
 
-<div id="game10" class="game hidden">
+<div
+    id="game10"
+    class="game hidden"
+>
 
-<h2>Dernière épreuve</h2>
+<h2>
+Dernière épreuve
+</h2>
 
 <p>
 Écris exactement son prénom.
@@ -899,16 +1251,24 @@ CELENA
     placeholder="écris ici"
 >
 
-<button type="button" onclick="finalGame()">
+<button
+    class="main-btn"
+    onclick="finalGame()"
+>
 valider
 </button>
 
-<div id="result10" class="result"></div>
+<div
+    id="result10"
+    class="result"
+></div>
 
 </div>
 
 
-<!-- FIN -->
+<!-- =========================
+     FIN
+========================= -->
 
 <div
     id="ending"
@@ -948,8 +1308,6 @@ Mais au fond c'était juste pour te faire sourire.
 Ma p'tite italienne.
 </p>
 
-<br>
-
 <div class="final-love">
 je t'aime celena❤️
 </div>
@@ -958,67 +1316,34 @@ je t'aime celena❤️
 
 </div>
 
-</div>
 
 </div>
 
 </div>
 
-
-<!-- RONALDO -->
-
-<div
-    id="ronaldoPage"
-    class="ronaldo-page hidden"
->
-
-<div class="ronaldo-box">
-
-<div class="ronaldo-face">
-
-<div class="tear left"></div>
-<div class="tear right"></div>
-
-<div class="ronaldo-mouth"></div>
-
 </div>
 
-<div class="ronaldo-title">
-RONALDO EST EN LARMES
-</div>
 
-<p>
-Tu as cliqué sur "je t'aime pas".
-</p>
-
-<p>
-Regarde ce que t'as fait.
-</p>
-
-<p class="locked">
-Cette page est bloquée.
-<br><br>
-Rafraîchis la page pour recommencer.
-</p>
-
-</div>
-
-</div>
-
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-/* ANIMATION DES RESULTATS */
+
+/* =========================
+   ANIMATION RESULTAT
+========================= */
 
 function animateResult(element,text,type){
 
-    if(!element)return;
+    if(!element) return;
 
     element.classList.remove("success","fail");
 
     void element.offsetWidth;
 
-    element.innerHTML=text;
+    element.textContent=text;
 
     element.classList.add(type);
 
@@ -1033,41 +1358,33 @@ function animateResult(element,text,type){
 }
 
 
-/* MOT DE PASSE */
+/* =========================
+   MOT DE PASSE
+========================= */
 
 function checkPassword(){
 
-    const passwordInput =
+    const input =
         document.getElementById("password");
 
     const message =
         document.getElementById("message");
 
-    const intro =
-        document.getElementById("intro");
+    if(
+        input.value.trim().toLowerCase()
+        ===
+        "aiko"
+    ){
 
-    const games =
-        document.getElementById("games");
+        document
+            .getElementById("intro")
+            .classList
+            .add("hidden");
 
-    if(!passwordInput){
-
-        console.error("Champ password introuvable");
-
-        return;
-    }
-
-    const enteredPassword =
-        passwordInput.value
-        .trim()
-        .toLowerCase();
-
-    if(enteredPassword==="aiko"){
-
-        intro.classList.add("hidden");
-
-        games.classList.remove("hidden");
-
-        message.innerHTML="";
+        document
+            .getElementById("games")
+            .classList
+            .remove("hidden");
 
         window.scrollTo({
             top:0,
@@ -1085,7 +1402,9 @@ function checkPassword(){
 }
 
 
-/* INDICES */
+/* =========================
+   INDICES
+========================= */
 
 function showHint(){
 
@@ -1095,26 +1414,31 @@ function showHint(){
         .remove("hidden");
 }
 
+
 function troll(number){
 
     const texts={
-        1:"Indice : ça commence par A.",
-        2:"Indice : t'es littéralement en train de le chercher.",
-        3:"Celui-là servait à rien mdrr.",
-        4:"AIKO. voilà maintenant avance."
+        1:"ça commence par A.",
+        2:"c'est pas très compliqué normalement.",
+        3:"bon celui-là sert absolument à rien.",
+        4:"AIKO. voilà. maintenant avance."
     };
 
     animateResult(
         document.getElementById("trollResult"),
         texts[number],
-        number===4 ? "success" : "fail"
+        number===4 ? "success":"fail"
     );
 }
 
 
-/* EPREUVE 1 */
+/* =========================
+   EPREUVE 1
+========================= */
 
 let loveCount=0;
+let exchanged=false;
+
 
 function loveClick(){
 
@@ -1122,9 +1446,20 @@ function loveClick(){
 
     document
         .getElementById("loveProgress")
-        .style.width=(loveCount*10)+"%";
+        .style.width=
+        Math.min(loveCount*10,100)+"%";
 
-    if(loveCount===9){
+
+    /*
+       Au 9e clic :
+       on inverse réellement
+       l'ordre des deux boutons.
+    */
+
+    if(loveCount===9 && !exchanged){
+
+        const container =
+            document.getElementById("loveButtons");
 
         const yes =
             document.getElementById("yesBtn");
@@ -1132,21 +1467,25 @@ function loveClick(){
         const no =
             document.getElementById("noBtn");
 
-        yes.style.left="50%";
-        yes.style.transform="translateX(-50%)";
 
-        no.style.left="0";
-        no.style.right="auto";
+        container.insertBefore(no,yes);
 
-        yes.classList.add("swap");
-        no.classList.add("swap");
+        exchanged=true;
+
+        container.classList.remove("exchange");
+
+        void container.offsetWidth;
+
+        container.classList.add("exchange");
+
 
         animateResult(
             document.getElementById("loveResult"),
-            "regarde bien... les places ont changé",
+            "attends... regarde les boutons",
             "success"
         );
     }
+
 
     if(loveCount>=10){
 
@@ -1156,23 +1495,164 @@ function loveClick(){
             "success"
         );
 
+
         document
-            .getElementById("game3")
+            .getElementById("game2")
             .classList
             .remove("hidden");
+
+
+        setTimeout(()=>{
+
+            document
+                .getElementById("game2")
+                .scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+
+        },300);
     }
 }
 
+
 function loveNo(){
 
-    document
-        .getElementById("ronaldoPage")
-        .classList
-        .remove("hidden");
+    /*
+       Aucun Ronaldo.
+       Aucun emoji.
+       Juste Hamouda.
+    */
+
+    showHamouda();
 }
 
 
-/* EPREUVE 3 */
+/* =========================
+   HAMOUDA
+========================= */
+
+function showHamouda(){
+
+    const page =
+        document.createElement("div");
+
+    page.className="hamouda-page";
+
+    page.innerHTML=`
+
+        <div class="hamouda-content">
+
+            <div class="hamouda-title">
+                HAMOUDA EST EN LARMES
+            </div>
+
+            <div class="hamouda-text">
+                Tu as cliqué sur « je t'aime pas ».
+                <br><br>
+                Regarde ce que t'as fait.
+                <br><br>
+                Cette page est bloquée.
+            </div>
+
+            <div class="refresh">
+                Rafraîchis la page pour recommencer.
+            </div>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(page);
+}
+
+
+/* =========================
+   EPREUVE 2
+========================= */
+
+function fakeTrap(){
+
+    animateResult(
+        document.getElementById("result2"),
+        "HAHA non. c'était un piège.",
+        "fail"
+    );
+
+
+    moveFakeButtons();
+}
+
+
+function moveFakeButtons(){
+
+    const zone =
+        document.getElementById("trapZone");
+
+    const fake1 =
+        document.getElementById("trapFake1");
+
+    const fake2 =
+        document.getElementById("trapFake2");
+
+
+    const maxX =
+        zone.clientWidth-145;
+
+    const maxY =
+        zone.clientHeight-55;
+
+
+    fake1.style.left=
+        Math.floor(Math.random()*Math.max(maxX,1))
+        +"px";
+
+    fake1.style.top=
+        Math.floor(Math.random()*Math.max(maxY,1))
+        +"px";
+
+
+    fake2.style.left=
+        Math.floor(Math.random()*Math.max(maxX,1))
+        +"px";
+
+    fake2.style.top=
+        Math.floor(Math.random()*Math.max(maxY,1))
+        +"px";
+}
+
+
+function correctTrap(){
+
+    animateResult(
+        document.getElementById("result2"),
+        "ok là t'as trouvé le vrai. enfin.",
+        "success"
+    );
+
+
+    document
+        .getElementById("game3")
+        .classList
+        .remove("hidden");
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("game3")
+            .scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+    },300);
+}
+
+
+/* =========================
+   EPREUVE 3
+========================= */
 
 function choice3(choice){
 
@@ -1184,10 +1664,12 @@ function choice3(choice){
             "success"
         );
 
+
         document
             .getElementById("game4")
             .classList
             .remove("hidden");
+
 
         setTimeout(startReflex,500);
 
@@ -1202,56 +1684,68 @@ function choice3(choice){
 }
 
 
-/* EPREUVE 4 */
+/* =========================
+   EPREUVE 4
+========================= */
 
 let reflexReady=false;
-let reflexTimer=null;
 let reflexRunning=false;
+let reflexTimer=null;
+
 
 function startReflex(){
 
-    if(reflexRunning)return;
+    if(reflexRunning) return;
 
     reflexRunning=true;
 
     const box =
         document.getElementById("reflex");
 
-    box.style.background="#d51f3f";
-    box.innerHTML="ROUGE";
 
-    const delay=
+    reflexReady=false;
+
+    box.style.background="#d71e40";
+    box.textContent="ROUGE";
+
+
+    const delay =
         Math.random()*5000+1800;
 
-    reflexTimer=setTimeout(()=>{
 
-        if(!reflexRunning)return;
-
-        reflexReady=true;
-
-        box.style.background="#20bd6b";
-        box.innerHTML="VERT";
-
-        const greenTime=
-            Math.random()*180+120;
-
+    reflexTimer =
         setTimeout(()=>{
 
-            if(!reflexRunning)return;
+            if(!reflexRunning) return;
 
-            reflexReady=false;
+            reflexReady=true;
 
-            box.style.background="#d51f3f";
-            box.innerHTML="ROUGE";
+            box.style.background="#20bd6b";
+            box.textContent="VERT";
 
-            reflexRunning=false;
 
-            startReflex();
+            const greenTime =
+                Math.random()*180+100;
 
-        },greenTime);
 
-    },delay);
+            setTimeout(()=>{
+
+                if(!reflexRunning) return;
+
+                reflexReady=false;
+
+                box.style.background="#d71e40";
+                box.textContent="ROUGE";
+
+                reflexRunning=false;
+
+                startReflex();
+
+            },greenTime);
+
+        },delay);
 }
+
 
 function reflexClick(){
 
@@ -1266,6 +1760,7 @@ function reflexClick(){
             "T'AS RÉUSSI. bien joué.",
             "success"
         );
+
 
         document
             .getElementById("game5")
@@ -1283,7 +1778,9 @@ function reflexClick(){
 }
 
 
-/* EPREUVE 5 */
+/* =========================
+   EPREUVE 5
+========================= */
 
 function sentence(correct){
 
@@ -1294,6 +1791,7 @@ function sentence(correct){
             "évidemment. enfin une réponse intelligente.",
             "success"
         );
+
 
         document
             .getElementById("game6")
@@ -1311,26 +1809,34 @@ function sentence(correct){
 }
 
 
-/* EPREUVE 6 */
+/* =========================
+   EPREUVE 6
+========================= */
 
 let holdInterval=null;
 let holdValue=0;
 
+
 function startHold(){
 
-    if(holdInterval)return;
+    if(holdInterval) return;
+
 
     holdInterval=setInterval(()=>{
 
         holdValue+=2;
 
+
         document
             .getElementById("holdFill")
-            .style.width=holdValue+"%";
+            .style.width=
+            holdValue+"%";
+
 
         if(holdValue>=100){
 
             clearInterval(holdInterval);
+
             holdInterval=null;
 
             animateResult(
@@ -1338,6 +1844,7 @@ function startHold(){
                 "barre remplie. épreuve validée.",
                 "success"
             );
+
 
             document
                 .getElementById("game7")
@@ -1348,9 +1855,11 @@ function startHold(){
     },80);
 }
 
+
 function stopHold(){
 
-    if(holdValue>=100)return;
+    if(holdValue>=100) return;
+
 
     clearInterval(holdInterval);
 
@@ -1358,9 +1867,11 @@ function stopHold(){
 
     holdValue=0;
 
+
     document
         .getElementById("holdFill")
         .style.width="0%";
+
 
     animateResult(
         document.getElementById("result6"),
@@ -1370,7 +1881,9 @@ function stopHold(){
 }
 
 
-/* EPREUVE 7 */
+/* =========================
+   EPREUVE 7
+========================= */
 
 function girlChoice(choice){
 
@@ -1378,27 +1891,30 @@ function girlChoice(choice){
 
         animateResult(
             document.getElementById("result7"),
-            "bonne réponse. heureusement.",
+            "ya pas mieux que elle",
             "success"
         );
-
-        document
-            .getElementById("game8")
-            .classList
-            .remove("hidden");
 
     }else{
 
         animateResult(
             document.getElementById("result7"),
-            "les filles des favelas ? t'as vraiment osé.",
-            "fail"
+            "tes innegalable oublie pas",
+            "success"
         );
     }
+
+
+    document
+        .getElementById("game8")
+        .classList
+        .remove("hidden");
 }
 
 
-/* EPREUVE 8 */
+/* =========================
+   EPREUVE 8
+========================= */
 
 function foundSecretHeart(){
 
@@ -1408,6 +1924,7 @@ function foundSecretHeart(){
         "success"
     );
 
+
     document
         .getElementById("game9")
         .classList
@@ -1415,17 +1932,24 @@ function foundSecretHeart(){
 }
 
 
-/* EPREUVE 9 */
+/* =========================
+   EPREUVE 9
+========================= */
 
 let colorsFound=[];
 
+
 function colorChoice(color){
 
-    if(color==="rose" || color==="vert"){
+    if(
+        color==="rose" ||
+        color==="vert"
+    ){
 
         if(!colorsFound.includes(color)){
             colorsFound.push(color);
         }
+
 
         if(colorsFound.length===1){
 
@@ -1434,14 +1958,17 @@ function colorChoice(color){
                 "une bonne couleur. il en reste une.",
                 "success"
             );
+        }
 
-        }else if(colorsFound.length===2){
+
+        if(colorsFound.length===2){
 
             animateResult(
                 document.getElementById("result9"),
                 "les deux bonnes couleurs. validé.",
                 "success"
             );
+
 
             document
                 .getElementById("game10")
@@ -1460,15 +1987,19 @@ function colorChoice(color){
 }
 
 
-/* EPREUVE 10 */
+/* =========================
+   EPREUVE 10
+========================= */
 
 function finalGame(){
 
     const input =
         document.getElementById("celenaInput");
 
+
     const value =
         input.value.trim().toUpperCase();
+
 
     if(value==="CELENA"){
 
@@ -1478,17 +2009,21 @@ function finalGame(){
             "success"
         );
 
+
         document
             .getElementById("ending")
             .classList
             .remove("hidden");
 
+
         setTimeout(()=>{
 
-            window.scrollTo({
-                top:document.body.scrollHeight,
-                behavior:"smooth"
-            });
+            document
+                .getElementById("ending")
+                .scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
 
         },300);
 
@@ -1501,6 +2036,21 @@ function finalGame(){
         );
     }
 }
+
+
+/* =========================
+   ENTREE MOT DE PASSE
+========================= */
+
+document
+    .getElementById("password")
+    .addEventListener("keydown",function(event){
+
+        if(event.key==="Enter"){
+            checkPassword();
+        }
+
+    });
 
 </script>
 
